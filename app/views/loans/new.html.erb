@@ -1,0 +1,14 @@
+<%= simple_form_for @loan do |f| %>
+  <%= f.input :lender %>
+  <%= f.input :borrower %>
+  <%= f.input :borrower %>
+  <%= f.input :principal %>
+  <%= f.input :termLength %>
+  <%= f.input :annualRate %>
+  <%= f.input :typeLoan %>
+  <%= f.input :frequencyPayment %>
+  <%= f.input :firstPaymentDate %>
+  <%= f.input :StartingMonthDelayed %>
+  <%= f.submit class:"btn btn-primary" %>
+<% end %>
+

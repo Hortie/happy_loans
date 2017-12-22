@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lender: MyText
+  borrower: MyText
+  principal: 1
+  termLength: 1
+  annualRate: 9.99
+  typeLoan: MyText
+  frequencyPayment: MyText
+  firstPaymentDate: 2017-12-22
+  StartingMonthDelayed: 1
+  schedule: one
+  user: one
+
+two:
+  lender: MyText
+  borrower: MyText
+  principal: 1
+  termLength: 1
+  annualRate: 9.99
+  typeLoan: MyText
+  frequencyPayment: MyText
+  firstPaymentDate: 2017-12-22
+  StartingMonthDelayed: 1
+  schedule: two
+  user: two
