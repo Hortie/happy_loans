@@ -1,14 +1,23 @@
-<%= simple_form_for @loan do |f| %>
-  <%= f.input :lender %>
-  <%= f.input :borrower %>
-  <%= f.input :borrower %>
-  <%= f.input :principal %>
-  <%= f.input :termLength %>
-  <%= f.input :annualRate %>
-  <%= f.input :typeLoan %>
-  <%= f.input :frequencyPayment %>
-  <%= f.input :firstPaymentDate %>
-  <%= f.input :StartingMonthDelayed %>
-  <%= f.submit class:"btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+
+      <%= simple_form_for @loan do |f| %>
+        <%= f.input :lender, label: 'Lender / Prêteur', error: 'Lender is mandatory, please specify one' %>
+        <%= f.input :borrower, label: 'Borrower / Emprunteur', error: 'Borrower is mandatory, please specify one'%>
+        <%= f.input :principal, label: 'Principal / Montant emprunté', error: 'principal is mandatory, please specify one'%>
+        <%= f.input :termLength , label: 'Term length in month', error: 'Length should be between 0 and 500'%>
+        <%= f.input :annualRate %>
+        <%= f.input :typeLoan %>
+        <%= f.input :frequencyPayment %>
+        <%= f.input :firstPaymentDate %>
+        <%= f.input :StartingMonthDelayed %>
+        <%= f.submit class:"btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+
 
