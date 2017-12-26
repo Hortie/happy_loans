@@ -9,7 +9,7 @@ class LoansController < ApplicationController
     @loan = Loan.new(loan_params)
     @loan.user = @user
     if @loan.save
-      redirect_to loans_path
+      redirect_to new_loan_schedule_path(@loan.id)
     else
       render :new
     end
@@ -22,7 +22,6 @@ class LoansController < ApplicationController
     @user = current_user
   end
   def loan_params
-    params[:loan][:principal] = (params[:loan][:principal].to_f * 100).to_i
     params.require(:loan).permit(:lender, :borrower, :principal , :termLength, :annualRate, :typeLoan, :frequencyPayment, :firstPaymentDate, :StartingMonthDelayed)
   end
 

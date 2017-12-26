@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20171222145508) do
     t.text "borrower"
     t.integer "principal"
     t.integer "termLength"
-    t.decimal "annualRate"
+    t.integer "annualRate"
     t.text "typeLoan"
     t.text "frequencyPayment"
     t.date "firstPaymentDate"

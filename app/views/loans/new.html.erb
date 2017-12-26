@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-4 col-sm-offset-4">
 
       <%= simple_form_for @loan do |f| %>
         <%= f.input :lender, label: 'Prêteur', error: 'Lender is mandatory, please specify one' %>
@@ -14,9 +14,6 @@
         <%= f.input :StartingMonthDelayed, label: 'Différé de remboursement du capital en mois' %>
         <%= f.submit class:"btn btn-primary" %>
       <% end %>
-    </div>
-    <div class="col-sm-7">
-      <h1>hello </h1>
     </div>
 </div>
 </div>
