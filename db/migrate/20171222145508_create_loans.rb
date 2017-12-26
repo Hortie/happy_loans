@@ -9,7 +9,7 @@ class CreateLoans < ActiveRecord::Migration[5.1]
       t.text :typeLoan
       t.text :frequencyPayment
       t.date :firstPaymentDate
-      t.integer :StartingMonthDelayed
+      t.integer :StartingMonthDelayed, default: 0
       t.references :schedule, foreign_key: true
       t.references :user, foreign_key: true
 
