@@ -1,22 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
+    <div class="col-sm-5">
 
       <%= simple_form_for @loan do |f| %>
-        <%= f.input :lender, label: 'Lender / Prêteur', error: 'Lender is mandatory, please specify one' %>
-        <%= f.input :borrower, label: 'Borrower / Emprunteur', error: 'Borrower is mandatory, please specify one'%>
-        <%= f.input :principal, label: 'Principal / Montant emprunté', error: 'principal is mandatory, please specify one'%>
-        <%= f.input :termLength , label: 'Term length in month', error: 'Length should be between 0 and 500'%>
-        <%= f.input :annualRate %>
-        <%= f.input :typeLoan %>
-        <%= f.input :frequencyPayment %>
-        <%= f.input :firstPaymentDate %>
-        <%= f.input :StartingMonthDelayed %>
+        <%= f.input :lender, label: 'Prêteur', error: 'Lender is mandatory, please specify one' %>
+        <%= f.input :borrower, label: 'Emprunteur', error: 'Borrower is mandatory, please specify one'%>
+        <%= f.input :principal, label: 'Montant emprunté', error: 'principal is mandatory, please specify one'%>
+        <%= f.input :termLength , label: 'Durée en mois de l emprunt', error: 'Length should be between 0 and 500'%>
+        <%= f.input :annualRate, label: 'Taux de l emprunt en % '%>
+        <%= f.input :typeLoan, label: 'Type de remboursement', collection: ["K+I constant", "K constant"] %>
+        <%= f.input :frequencyPayment, label: 'Fréquence de remboursement', collection: ["mensuel", "trimestriel", "semestriel", "annuel"]%>
+        <%= f.input :firstPaymentDate , label: 'Date de la première échéance'%>
+        <%= f.input :StartingMonthDelayed, label: 'Différé de remboursement du capital en mois' %>
         <%= f.submit class:"btn btn-primary" %>
       <% end %>
-
     </div>
-  </div>
+    <div class="col-sm-7">
+      <h1>hello </h1>
+    </div>
+</div>
 </div>
 
 

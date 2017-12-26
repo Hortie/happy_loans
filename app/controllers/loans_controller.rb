@@ -22,8 +22,8 @@ class LoansController < ApplicationController
     @user = current_user
   end
   def loan_params
-    params[:principal] * 100 if !params[:principal].nil?
-    params.require(:loan).permit(:lender, :borrower, :principal, :termLength, :annualRate, :typeLoan, :frequencyPayment, :firstPaymentDate, :StartingMonthDelayed)
+    params[:loan][:principal] = (params[:loan][:principal].to_f * 100).to_i
+    params.require(:loan).permit(:lender, :borrower, :principal , :termLength, :annualRate, :typeLoan, :frequencyPayment, :firstPaymentDate, :StartingMonthDelayed)
   end
 
 end
