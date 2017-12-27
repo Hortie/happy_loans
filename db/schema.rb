@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222145508) do
+ActiveRecord::Schema.define(version: 20171226160139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,9 @@ ActiveRecord::Schema.define(version: 20171222145508) do
     t.text "frequencyPayment"
     t.date "firstPaymentDate"
     t.integer "StartingMonthDelayed"
-    t.bigint "schedule_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["schedule_id"], name: "index_loans_on_schedule_id"
     t.index ["user_id"], name: "index_loans_on_user_id"
   end
 
@@ -42,6 +40,8 @@ ActiveRecord::Schema.define(version: 20171222145508) do
     t.integer "principalBalance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "loan_id"
+    t.index ["loan_id"], name: "index_schedules_on_loan_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,6 +61,6 @@ ActiveRecord::Schema.define(version: 20171222145508) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "loans", "schedules"
   add_foreign_key "loans", "users"
+  add_foreign_key "schedules", "loans"
 end

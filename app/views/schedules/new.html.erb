@@ -1,11 +1,76 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-5">
+  <div class="row amort_info">
+    <div class="col-sm-6">
       <h3>Loan informations</h3>
+        <table class="amort_info1" >
+          <tr>
+            <td>Emprunteur</td>
+            <td><%= @loan.lender %></td>
+          </tr>
+          <tr>
+            <td>Prêteur</td>
+            <td><%= @loan.borrower %></td>
+          </tr>
+          <tr>
+            <td>Montant d'emprunt </td>
+            <td><%= display_amount(@loan.principal)  %></td>
 
+          </tr>
+          <tr>
+            <td>taux annuel </td>
+            <td><%= display_rate(@loan.annualRate) %></td>
+          </tr>
+      </table>
     </div>
-    <div class="col-sm-7">
-      <h1>hello </h1>
+    <div class="col-sm-6">
+      <h3>End and Cost </h3>
+        <table class="amort_info2" >
+            <tr>
+              <td>Last Due Date</td>
+              <td><%= display_date(@schedule.last.dueDate) %></td>
+            </tr>
+            <tr>
+              <td>Total interest</td>
+              <td><%= display_amount(@schedule.inject(0){|sum,line| sum + line.interestDue }) %></td>
+            </tr>
+            <tr>
+              <td>Total Principal</td>
+              <td><%= display_amount(@schedule.inject(0){|sum,line| sum + line.principalDue } ) %></td>
+            </tr>
+        </table>
     </div>
+  </div>
+
+  <div class="row amort_row">
+    <div class="col-sm-12 text-align ">
+      <h3>Le tableau d'amortissement de votre prêt </h3>
+      <table class="amort_table" >
+        <thead>
+          <tr class="title_table">
+            <th width="10%">No</th>
+            <th>Due Date</th>
+            <th>Interest Due</th>
+            <th>Principal Due</th>
+            <th>Payment Due</th>
+            <th>Principal Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @schedule.each do |line| %>
+            <tr class="line_table">
+              <td><%= line.no %></td>
+              <td><%= display_date(line.dueDate)%></td>
+              <td><%= display_amount(line.interestDue) %></td>
+              <td><%= display_amount(line.principalDue)%></td>
+              <td><%= display_amount(line.paymentDue) %></td>
+              <td><%= display_amount(line.principalBalance) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-</div>
+
+
+
