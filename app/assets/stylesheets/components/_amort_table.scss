@@ -1,0 +1,54 @@
+.amort_row h3 {
+  font-size: 18px;
+}
+
+.amort_table {
+  border: 3px solid $my_green;
+  border-spacing: 0.25rem;
+  padding: 0.25rem;
+  border-collapse: collapse;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.title_table {
+  color: $my_green;
+  border: 3px solid $my_green;
+  font-size: 16px;
+  th {
+    padding: 5px;
+    border: 1px solid $my_green;
+  }
+}
+
+.line_table {
+  align: center;
+  color: black;
+  border: 1px solid $my_green;
+  text-align: center;
+  td {
+    border: 1px solid $my_green;
+  }
+  td:hover {
+    background: $my_green;
+  }
+}
+
+.amort_info2 {
+  border: 3px solid $my_green;
+  font-size: 16px;
+  td {
+    padding: 5px;
+    border: 1px solid $my_green;
+    text-align: left;
+  }
+}
+.amort_info1 {
+  border: 3px solid $my_green;
+  font-size: 16px;
+  td {
+    padding: 5px;
+    border: 1px solid $my_green;
+    text-align: left;
+  }
+}

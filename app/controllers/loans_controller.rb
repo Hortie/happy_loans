@@ -6,7 +6,10 @@ class LoansController < ApplicationController
   end
 
   def create
-    @loan = Loan.new(loan_params)
+    lp = loan_params
+    lp[:principal] = (lp[:principal].to_f * 100).round
+    lp[:annualRate] = (lp[:annualRate].to_f * 1000).round
+    @loan = Loan.new(lp)
     @loan.user = @user
     if @loan.save
       redirect_to new_loan_schedule_path(@loan.id)
