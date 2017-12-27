@@ -1,0 +1,41 @@
+.servicecard {
+  height: 300px;
+  width: 300px;
+  background-color: $my_blue;
+  color: $my_black;
+  position: relative;
+  opacity: 0.9;
+  margin: 40px;
+  text-align: center;
+}
+.card-logo {
+  position: absolute;
+  top: 0px;
+  height: 50%;
+  width: 100%;
+  text-align: center;
+  color: $my_white;
+}
+.card-logo .fa {
+  margin: 50px;
+  font-size: 60px;
+  text-align: center;
+}
+.card-description {
+  position: absolute;
+  bottom: 0px;
+  height: 50%;
+  width: 100%;
+  text-align: center;
+}
+.card-description h2 {
+  font-size: 24px;
+}
+.card-description p {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.servicecard:hover {
+  opacity: 1;
+}
