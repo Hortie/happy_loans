@@ -5,7 +5,7 @@ class CreateLoans < ActiveRecord::Migration[5.1]
       t.text :borrower
       t.integer :principal
       t.integer :termLength
-      t.decimal :annualRate
+      t.integer :annualRate
       t.text :typeLoan
       t.text :frequencyPayment
       t.date :firstPaymentDate
