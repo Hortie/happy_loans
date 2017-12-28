@@ -1,6 +1,10 @@
 class LoansController < ApplicationController
   before_action :set_user
 
+  def index
+    @loans = Loan.where(user_id: current_user.id)
+  end
+
   def new
     @loan = Loan.new
   end
@@ -27,5 +31,7 @@ class LoansController < ApplicationController
   def loan_params
     params.require(:loan).permit(:lender, :borrower, :principal , :termLength, :annualRate, :typeLoan, :frequencyPayment, :firstPaymentDate, :StartingMonthDelayed)
   end
+
+
 
 end
