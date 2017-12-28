@@ -2,6 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 
+  def get_amout(number)
+    return number.to_f / 100
+  end
+  def get_rate(number)
+    return number.to_f / 1000 / 100
+  end
   def display_amount(number)
     return "#{ActiveSupport::NumberHelper.number_to_delimited(number.to_f / 100 )} €"
   end
@@ -18,5 +24,5 @@ class ApplicationController < ActionController::Base
     return (number * 100 ).to_i
   end
 
-  helper_method :display_amount, :display_rate, :display_date, :save_amount, :save_rate
+  helper_method :get_amout, :get_rate, :display_amount, :display_rate, :display_date, :save_amount, :save_rate
 end

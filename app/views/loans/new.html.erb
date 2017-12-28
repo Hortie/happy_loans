@@ -9,7 +9,7 @@
         <%= f.input :termLength , label: 'Durée de l emprunt en année'%>
         <%= f.input :annualRate, label: 'Taux annuel de l emprunt en % '%>
         <%= f.input :typeLoan, label: 'Type de remboursement', collection: ["K+I constant"] %>
-        <%= f.input :frequencyPayment, label: 'Fréquence de remboursement', collection: ["mensual"]%>
+        <%= f.input :frequencyPayment, label: 'Fréquence de remboursement', collection: ["mensuelle", "trimestrielle", "semestrielle", "annuelle"]%>
         <%= f.input :firstPaymentDate , label: 'Date de la première échéance'%>
         <%= f.input :StartingMonthDelayed, label: 'Différé de remboursement du capital en mois' %>
         <%= f.submit class:"btn btn-primary" %>
@@ -17,6 +17,4 @@
     </div>
 </div>
 </div>
-
-
 
