@@ -1,0 +1,27 @@
+.container-new-loan {
+  color: $my_blue;
+  font-size: 16px;
+  padding: 0px;
+
+  h1 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .form_new_loan {
+    height: 10px;
+  }
+  .btn {
+    width: 100%;
+    height: 50px;
+  }
+  .form-control {
+    height: 35px;
+    background-color: $my_gray;
+    color: $my_blue;
+    border-color: $my_blue;
+  }
+  .required {
+    border-color: $my_blue;
+  }
+}
+

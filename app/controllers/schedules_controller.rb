@@ -56,13 +56,13 @@ class SchedulesController < ApplicationController
 
   def get_periode(frequency)
     case frequency
-    when "mensuelle"
+    when "mensuelles"
       return 12
-    when "trimestrielle"
+    when "trimestrielles"
       return 4
-    when "semestrielle"
+    when "semestrielles"
       return 3
-    when "annuelle"
+    when "annuelles"
       return 1
     end
   end
