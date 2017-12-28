@@ -1,0 +1,61 @@
+<div class="container indexcontainer">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- button to add a loan  -->
+      <%= link_to new_loan_path do %>
+        <i class="fa fa-plus-circle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ajouter une dette"></i>
+      <% end %>
+      <!-- index all loans  -->
+      <h1>Voici la liste de l'ensemble des dettes</h1>
+      <h3>En date du <%= display_date(Time.now) %></h3>
+      <div>
+            <table class="all_l_table" >
+              <thead>
+                <tr>
+                  <th width="5%">Select</th>
+                  <th>Emprunteur</th>
+                  <th>Prêteur</th>
+                  <th>Capital initial</th>
+                  <th>Taux annuel</th>
+                  <th>Capital restant du à ce jour </th>
+                  <th>Dernière échéance </th>
+                  <th>Détails</i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @loans.each do |loan| %>
+                  <tr>
+                    <td> box</td>
+                    <td><%= loan.borrower%></td>
+                    <td><%= loan.lender%></td>
+                    <td class="right"><%= display_amount(loan.principal)%></td>
+                    <td class="right"><%= display_rate(loan.annualRate)%></td>
+                    <td class="right">restant du </td>
+                    <td class="right">date fin </td>
+                    <td><%= link_to new_loan_schedule_path(loan.id) do %>
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th class="right"><%= display_amount(@loans.inject(0){|sum,loan| sum + loan.principal }) %></th>
+                  <th></th>
+                  <th class="right">total K  </th>
+                  <th class="right">last due Date </th>
+                  <th></th>
+                </tr>
+       </tfoot>
+            </table>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
