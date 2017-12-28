@@ -10,6 +10,13 @@ class Loan < ApplicationRecord
   validates :frequencyPayment, presence: true
   validates :firstPaymentDate, presence: true
 
+
+  def get_lastDueDate(loan_id)
+    sched = Schedule.where(loan_id: loan_id).order(:no)
+    return sched.last[:dueDate]
+  end
+
+
 end
 
 

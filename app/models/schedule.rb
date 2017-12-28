@@ -5,6 +5,4 @@ class Schedule < ApplicationRecord
     Schedule.where(loan_id: loan_id).order(:no)
   end
 
-
-
 end
