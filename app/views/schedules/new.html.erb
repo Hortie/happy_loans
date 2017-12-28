@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row amort_info">
     <div class="col-sm-6">
-      <h3>Loan informations</h3>
+      <h3>Données d'entrées :</h3>
         <table class="amort_info1" >
           <tr>
             <td>Emprunteur</td>
@@ -23,7 +23,7 @@
       </table>
     </div>
     <div class="col-sm-6">
-      <h3>End and Cost </h3>
+      <h3>Informations complémentaires: </h3>
         <table class="amort_info2" >
             <tr>
               <td>Last Due Date</td>
@@ -43,7 +43,19 @@
 
   <div class="row amort_row">
     <div class="col-sm-12 text-align ">
-      <h3>Le tableau d'amortissement de votre prêt </h3>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h3>Vérifier le tableau d'amortissement de votre prêt puis : </h3>
+          </div>
+          <div class="col-sm-6">
+              <%= form_tag keep_to_true_loan_path(@loan.id), method: :patch do  %>
+                <%= submit_tag 'Sauvegarder',  class: "btn btntokeep"%>
+               <% end  %>
+          </div>
+        </div>
+      </div>
+
       <table class="amort_table" >
         <thead>
           <tr class="title_table">

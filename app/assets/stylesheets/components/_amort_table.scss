@@ -1,7 +1,11 @@
 .amort_row h3 {
   font-size: 18px;
+  font-weight: bold;
 }
-
+.amort_info h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
 .amort_table {
   border: 3px solid $my_green;
   border-spacing: 0.25rem;
@@ -51,4 +55,14 @@
     border: 1px solid $my_green;
     text-align: left;
   }
+}
+
+.btntokeep {
+  color: $my_green;
+  font-weight: bold;
+  font-size: 18px;
+  // background-color: $my_white;
+  height:  50px;
+  width: 150px;
+
 }
