@@ -7,7 +7,7 @@ class Loan < ApplicationRecord
   validates :termLength, presence: true
   validates :annualRate, presence: true
   validates :typeLoan, presence: true
-  validates :frequencyPayment, presence: true
+  validates :frequencyPayment, presence: true # monthly, trimestrial, semestrial, annualy
   validates :firstPaymentDate, presence: true
 
 
