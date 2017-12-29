@@ -8,6 +8,14 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %>
+
+    <!-- google charts  -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages: ['corechart', 'table', 'sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+    </script>
+  <!-- end of google charts  -->
   </head>
   <body>
     <%= render 'shared/navbar' %>
