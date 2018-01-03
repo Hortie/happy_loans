@@ -22,15 +22,16 @@ class SchedulesController < ApplicationController
     principalBalance = capital
     #Case of some month delayed
     i = 1
-    loan.StartingMonthDelayed.times do
-      interestDue = (principalBalance * tx_periode).round
-      principalDue = 0
-      principalBalance = principalBalance
-      dueDate = dueDate + 1.months
-      newsch = Schedule.create(loan_id: loan.id, no: i, dueDate: dueDate, interestDue: interestDue,
-        principalDue: principalDue, paymentDue: mensualite, principalBalance: principalBalance)
-      i += 1
-
+      if !loan.StartingMonthDelayed.nil?
+        loan.StartingMonthDelayed.times do
+        interestDue = (principalBalance * tx_periode).round
+        principalDue = 0
+        principalBalance = principalBalance
+        dueDate = dueDate + 1.months
+        newsch = Schedule.create(loan_id: loan.id, no: i, dueDate: dueDate, interestDue: interestDue,
+          principalDue: principalDue, paymentDue: mensualite, principalBalance: principalBalance)
+        i += 1
+      end
     end
 
      # echence à npartir du remboursmenet du capital

@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :loans, dependent: :destroy
+  has_many :schedules, through: :loans, dependent: :destroy
 
 end

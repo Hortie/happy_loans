@@ -22,6 +22,17 @@ class LoansController < ApplicationController
     end
   end
 
+  def keep_to_true
+    Loan.find(params[:id]).update(tokeep: true)
+    Schedule.get_schedule(params[:id]).map { |item| item.update(tokeep: true) }
+    destroy_others
+  end
+
+  def destroy
+    Loan.find(params[:id]).destroy
+    Schedule.get_schedule(params[:id]).destroy
+    redirect_to loans_path
+  end
 
   private
 
@@ -32,6 +43,11 @@ class LoansController < ApplicationController
     params.require(:loan).permit(:lender, :borrower, :principal , :termLength, :annualRate, :typeLoan, :frequencyPayment, :firstPaymentDate, :StartingMonthDelayed)
   end
 
+  def destroy_others
+    Loan.where(tokeep: false).each {|loan| loan.destroy }
+    Schedule.where(tokeep: false).each {|sch| sch.destroy }
+    redirect_to loans_path
+  end
 
 
 end
