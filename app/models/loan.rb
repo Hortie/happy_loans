@@ -1,5 +1,6 @@
 class Loan < ApplicationRecord
   belongs_to :user
+  has_many :schedules, dependent: :destroy
 
   validates :lender, presence: true
   validates :borrower, presence: true

@@ -23,15 +23,16 @@ class LoansController < ApplicationController
   end
 
   def keep_to_true
-    @loan = Loan.find(params[:id])
-    @loan[:tokeep] = true
-
-    # @schedules = Schedule.get_schedule(params[:loan_id])
-    # @schedules.map { |item| item.tokeep = true }
-
-    redirect_to loans_path
+    Loan.find(params[:id]).update(tokeep: true)
+    Schedule.get_schedule(params[:id]).map { |item| item.update(tokeep: true) }
+    destroy_others
   end
 
+  def destroy
+    Loan.find(params[:id]).destroy
+    Schedule.get_schedule(params[:id]).destroy
+    redirect_to loans_path
+  end
 
   private
 
@@ -42,13 +43,11 @@ class LoansController < ApplicationController
     params.require(:loan).permit(:lender, :borrower, :principal , :termLength, :annualRate, :typeLoan, :frequencyPayment, :firstPaymentDate, :StartingMonthDelayed)
   end
 
-  # def destroy_others
-  #   @schedules = Schedule.where(tokeep: false)
-  #   @schedules.each {|schedule| schedule.destroy }
-  #   @loans = Loan.where(tokeep: false)
-  #   @loans.each {|loan| loan.destroy }
-  #   redirect_to loans_path
-  # end
+  def destroy_others
+    Loan.where(tokeep: false).each {|loan| loan.destroy }
+    Schedule.where(tokeep: false).each {|sch| sch.destroy }
+    redirect_to loans_path
+  end
 
 
 end
