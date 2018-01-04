@@ -3,6 +3,8 @@ class LoansController < ApplicationController
 
   def index
     @loans = Loan.where(user_id: current_user.id)
+    ids = @loans.map { |ll| ll.id }
+    @schedules = Schedule.where(loan_id: ids)
   end
 
   def new
@@ -30,7 +32,6 @@ class LoansController < ApplicationController
 
   def destroy
     Loan.find(params[:id]).destroy
-    Schedule.get_schedule(params[:id]).destroy
     redirect_to loans_path
   end
 
@@ -45,7 +46,6 @@ class LoansController < ApplicationController
 
   def destroy_others
     Loan.where(tokeep: false).each {|loan| loan.destroy }
-    Schedule.where(tokeep: false).each {|sch| sch.destroy }
     redirect_to loans_path
   end
 
