@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 20171228163938) do
     t.text "lender"
     t.text "borrower"
     t.integer "principal"
-    t.integer "termLength"
-    t.integer "annualRate"
-    t.text "typeLoan"
-    t.text "frequencyPayment"
-    t.date "firstPaymentDate"
-    t.integer "StartingMonthDelayed"
+    t.integer "term_length"
+    t.integer "annual_rate"
+    t.text "type_loan"
+    t.text "frequency_payment"
+    t.datetime "first_payment_date"
+    t.integer "starting_month_delayed"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,11 +35,11 @@ ActiveRecord::Schema.define(version: 20171228163938) do
 
   create_table "schedules", force: :cascade do |t|
     t.integer "no"
-    t.date "dueDate"
-    t.integer "interestDue"
-    t.integer "principalDue"
-    t.integer "paymentDue"
-    t.integer "principalBalance"
+    t.datetime "due_date"
+    t.integer "interest_due"
+    t.integer "principal_due"
+    t.integer "payment_due"
+    t.integer "principal_balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "loan_id"

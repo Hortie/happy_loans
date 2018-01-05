@@ -12,24 +12,24 @@ class SchedulesController < ApplicationController
   private
 
   def create_schedule(loan) #tout est calculé en cents
-    periode = get_periode(loan.frequencyPayment)
+    periode = get_periode(loan.frequency_payment)
     capital = loan[:principal]  # en cents
-    tx_periode = get_rate(loan[:annualRate]) / periode
-    nb_echeance = loan[:termLength] * periode
+    tx_periode = get_rate(loan[:annual_rate]) / periode
+    nb_echeance = loan[:term_length] * periode
     mensualite = (capital * tx_periode / (1-(1 + tx_periode)**(-nb_echeance))).round # en cents
-    dueDate = loan[:firstPaymentDate]
+    dueDate = loan[:first_payment_date]
 
     principalBalance = capital
     #Case of some month delayed
     i = 1
-      if !loan.StartingMonthDelayed.nil?
-        loan.StartingMonthDelayed.times do
+      if !loan.starting_month_delayed.nil?
+        loan.starting_month_delayed.times do
         interestDue = (principalBalance * tx_periode).round
         principalDue = 0
         principalBalance = principalBalance
         dueDate = dueDate + 1.months
-        newsch = Schedule.create(loan_id: loan.id, no: i, dueDate: dueDate, interestDue: interestDue,
-          principalDue: principalDue, paymentDue: mensualite, principalBalance: principalBalance)
+        newsch = Schedule.create(loan_id: loan.id, no: i, due_date: dueDate, interest_due: interestDue,
+          principal_due: principalDue, payment_due: mensualite, principal_balance: principalBalance)
         i += 1
       end
     end
@@ -40,8 +40,8 @@ class SchedulesController < ApplicationController
       principalDue = (mensualite - interestDue).round
       principalBalance = principalBalance - principalDue
       dueDate = dueDate + (12 / periode).months
-      newsch = Schedule.create(loan_id: loan.id, no: i, dueDate: dueDate, interestDue: interestDue,
-        principalDue: principalDue, paymentDue: mensualite, principalBalance: principalBalance)
+      newsch = Schedule.create(loan_id: loan.id, no: i, due_date: dueDate, interest_due: interestDue,
+        principal_due: principalDue, payment_due: mensualite, principal_balance: principalBalance)
       i += 1
       end
     # last echeance to get exact capital to reimburse
@@ -50,8 +50,8 @@ class SchedulesController < ApplicationController
       mensualite = principalDue + interestDue
       principalBalance = 0
       dueDate = dueDate + (12 / periode).months
-      newsch = Schedule.create(loan_id: loan.id, no: i, dueDate: dueDate, interestDue: interestDue,
-        principalDue: principalDue, paymentDue: mensualite, principalBalance: principalBalance)
+      newsch = Schedule.create(loan_id: loan.id, no: i, due_date: dueDate, interest_due: interestDue,
+        principal_due: principalDue, payment_due: mensualite, principal_balance: principalBalance)
   end
 
 

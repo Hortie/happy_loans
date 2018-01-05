@@ -28,7 +28,7 @@
                     <td><%= loan.borrower%></td>
                     <td><%= loan.lender%></td>
                     <td class="right"><%= display_amount(loan.principal)%></td>
-                    <td class="right"><%= display_rate(loan.annualRate)%></td>
+                    <td class="right"><%= display_rate(loan.annual_rate)%></td>
                     <td class="right">restant du </td>
                     <td class="right">date fin </td>
                     <td><%= link_to new_loan_schedule_path(loan.id) do %>
@@ -65,6 +65,8 @@
   <p> </p>
   <p> </p>
   <p> </p>
+<p> </p>
+      <%= due_per_period %>
   <p> </p>
       <%= bar_chart @loans.group(:lender).count, height: '500px'%>
 <p> </p>
@@ -72,7 +74,6 @@
       <%= loans_by_borrower %>
 <p> </p>
       <%= initial_capital_by_borrower %>
-
     </div>
   </div>
 </div>

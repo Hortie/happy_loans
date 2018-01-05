@@ -3,12 +3,12 @@
   <%= f.input :lender, label: 'Prêteur',  placeholder: 'Votre Banque', error: 'Lender is mandatory, please specify one'%>
   <%= f.input :borrower, label: 'Emprunteur', placeholder: 'SAS ET', error: 'Borrower is mandatory, please specify one'%>
   <%= f.input :principal, label: 'Montant (€)', placeholder: '100 000.50' ,error: 'principal is mandatory, please specify one'%>
-  <%= f.input :termLength , label: 'Durée (années)', placeholder: '10' %>
-  <%= f.input :annualRate, label: 'Taux annuel (%)', placeholder: '1.254'%>
-  <%= f.input :typeLoan, label: 'Type d emprunt', collection: ["K+I constant"], include_blank: false%>
-  <%= f.input :frequencyPayment, label: 'Echéances', collection: ["mensuelles", "trimestrielles", "semestrielles", "annuelles"], include_blank: false %>
-  <%= f.input :StartingMonthDelayed, label: 'Différé de remboursement du capital (mois)' %>
+  <%= f.input :term_length , label: 'Durée (années)', placeholder: '10' %>
+  <%= f.input :annual_rate, label: 'Taux annuel (%)', placeholder: '1.254'%>
+  <%= f.input :type_loan, label: 'Type d emprunt', collection: ["K+I constant"], include_blank: false%>
+  <%= f.input :frequency_payment, label: 'Echéances', collection: ["mensuelles", "trimestrielles", "semestrielles", "annuelles"], include_blank: false %>
+  <%= f.input :starting_month_delayed, label: 'Différé de remboursement du capital (mois)' %>
   <%= f.input :comment, label: 'Commentaires' %>
-  <%= f.input :firstPaymentDate , as: :string, label: 'Date 1ère échéance', input_html: {class: "datepicker"}  %>
+  <%= f.input :first_payment_date , as: :string, label: 'Date 1ère échéance', input_html: {class: "datepicker"}  %>
   <%= f.submit value: "Voir le tableau d'amortissement ", class:"btn btn-primary " %>
 <% end %>

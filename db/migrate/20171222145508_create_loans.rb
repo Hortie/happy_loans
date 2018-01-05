@@ -4,12 +4,12 @@ class CreateLoans < ActiveRecord::Migration[5.1]
       t.text :lender
       t.text :borrower
       t.integer :principal
-      t.integer :termLength
-      t.integer :annualRate
-      t.text :typeLoan
-      t.text :frequencyPayment
-      t.date :firstPaymentDate
-      t.integer :StartingMonthDelayed
+      t.integer :term_length
+      t.integer :annual_rate
+      t.text :type_loan
+      t.text :frequency_payment
+      t.datetime :first_payment_date
+      t.integer :starting_month_delayed
       t.references :schedule, foreign_key: true
       t.references :user, foreign_key: true
 
