@@ -25,7 +25,7 @@
           </tr>
           <tr>
             <td>taux annuel </td>
-            <td><%= display_rate(@loan.annualRate) %></td>
+            <td><%= display_rate(@loan.annual_rate) %></td>
           </tr>
       </table>
     </div>
@@ -33,15 +33,15 @@
         <table class="amort_info2" >
             <tr>
               <td>Last Due Date</td>
-              <td><%= display_date(@schedule.last.dueDate) %></td>
+              <td><%= display_date(@schedule.last.due_date) %></td>
             </tr>
             <tr>
               <td>Total interest</td>
-              <td><%= display_amount(@schedule.inject(0){|sum,line| sum + line.interestDue }) %></td>
+              <td><%= display_amount(@schedule.inject(0){|sum,line| sum + line.interest_due }) %></td>
             </tr>
             <tr>
               <td>Total Principal</td>
-              <td><%= display_amount(@schedule.inject(0){|sum,line| sum + line.principalDue } ) %></td>
+              <td><%= display_amount(@schedule.inject(0){|sum,line| sum + line.principal_due } ) %></td>
             </tr>
         </table>
     </div>
@@ -80,11 +80,11 @@
           <% @schedule.each do |line| %>
             <tr class="line_table">
               <td><%= line.no %></td>
-              <td><%= display_date(line.dueDate)%></td>
-              <td><%= display_amount(line.interestDue) %></td>
-              <td><%= display_amount(line.principalDue)%></td>
-              <td><%= display_amount(line.paymentDue) %></td>
-              <td><%= display_amount(line.principalBalance) %></td>
+              <td><%= display_date(line.due_date)%></td>
+              <td><%= display_amount(line.interest_due) %></td>
+              <td><%= display_amount(line.principal_due)%></td>
+              <td><%= display_amount(line.payment_due) %></td>
+              <td><%= display_amount(line.principal_balance) %></td>
             </tr>
           <% end %>
         </tbody>

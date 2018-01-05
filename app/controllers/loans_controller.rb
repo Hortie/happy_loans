@@ -14,7 +14,7 @@ class LoansController < ApplicationController
   def create
     lp = loan_params
     lp[:principal] = (lp[:principal].to_f * 100).round
-    lp[:annualRate] = (lp[:annualRate].to_f * 1000).round
+    lp[:annual_rate] = (lp[:annual_rate].to_f * 1000).round
     @loan = Loan.new(lp)
     @loan.user = @user
     if @loan.save
@@ -41,7 +41,7 @@ class LoansController < ApplicationController
     @user = current_user
   end
   def loan_params
-    params.require(:loan).permit(:lender, :borrower, :principal , :termLength, :annualRate, :typeLoan, :frequencyPayment, :firstPaymentDate, :StartingMonthDelayed)
+    params.require(:loan).permit(:lender, :borrower, :principal , :term_length, :annual_rate, :type_loan, :frequency_payment, :first_payment_date, :starting_month_delayed)
   end
 
   def destroy_others

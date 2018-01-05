@@ -5,16 +5,16 @@ class Loan < ApplicationRecord
   validates :lender, presence: true
   validates :borrower, presence: true
   validates :principal, presence: true
-  validates :termLength, presence: true
-  validates :annualRate, presence: true
-  validates :typeLoan, presence: true
-  validates :frequencyPayment, presence: true # monthly, trimestrial, semestrial, annualy
-  validates :firstPaymentDate, presence: true
+  validates :term_length, presence: true
+  validates :annual_rate, presence: true
+  validates :type_loan, presence: true
+  validates :frequency_payment, presence: true # monthly, trimestrial, semestrial, annualy
+  validates :first_payment_date, presence: true
 
 
   def get_lastDueDate(loan_id)
     sched = Schedule.where(loan_id: loan_id).order(:no)
-    return sched.last[:dueDate]
+    return sched.last[:due_date]
   end
 
 

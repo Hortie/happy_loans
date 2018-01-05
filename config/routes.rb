@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       collection do
         get 'loans_by_borrower'
         get 'initial_capital_by_borrower'
+        get 'due_per_period'
       end
     end
 end
