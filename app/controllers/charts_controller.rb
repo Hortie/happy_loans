@@ -12,6 +12,4 @@ class ChartsController < ApplicationController
   end
 
 
-
-
 end
