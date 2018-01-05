@@ -58,4 +58,23 @@
   </div>
 </div>
 
-<%= bar_chart @schedules.group(:dueDate).count %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+      <%= bar_chart @loans.group(:lender).count, height: '500px'%>
+<p> </p>
+<p> </p>
+      <%= loans_by_borrower %>
+<p> </p>
+      <%= initial_capital_by_borrower %>
+
+    </div>
+  </div>
+</div>
+
+
