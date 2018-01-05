@@ -9,8 +9,12 @@ Rails.application.routes.draw do
       patch :keep_to_true
     end
     resources :schedules, only: [:new, :create, :destroy, :update]
-
-
   end
 
+    resources :charts, only: [] do
+      collection do
+        get 'loans_by_borrower'
+        get 'initial_capital_by_borrower'
+      end
+    end
 end
