@@ -1,0 +1,43 @@
+<h1>Liste de l'ensemble des dettes en date du <%= display_date(Time.now) %></h1>
+<div>
+  <table class="all_l_table" >
+    <thead>
+      <tr>
+        <th>Emprunteur</th>
+        <th>Prêteur</th>
+        <th>Capital initial</th>
+        <th>Taux annuel</th>
+        <th>Capital restant du à ce jour </th>
+        <th>Dernière échéance </th>
+        <th>Détails</i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @loans.each do |loan| %>
+      <tr>
+        <td><%= loan.borrower%></td>
+        <td><%= loan.lender%></td>
+        <td class="right"><%= display_amount(loan.principal)%></td>
+        <td class="right"><%= display_rate(loan.annual_rate)%></td>
+        <td class="right"><%= capital_restant_du(loan, Time.now) %></td>
+        <td class="right"><%= last_due_date(loan, Time.now) %> </td>
+        <td><%= link_to new_loan_schedule_path(loan.id) do %>
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th class="right"><%= display_amount(@loans.inject(0){|sum,loan| sum + loan.principal }) %></th>
+        <th></th>
+        <th class="right"><%= capital_restant_du_total(Time.now) %> </th>
+        <th></th>
+        <th></th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
