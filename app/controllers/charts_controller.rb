@@ -11,7 +11,7 @@ class ChartsController < ApplicationController
   end
 
   def due_per_period
-    loan_ids = Loan.where(user_id: current_user).map { |x| x.id }
+    loan_ids = get_loans_id
     result = Schedule.where(loan_id: loan_ids, tokeep: true).group_by_year(:due_date, format: "%Y").sum("principal_due / 100")
     render json: [{ name: 'Capital annuel à rembourser' , data: result }]
   end
