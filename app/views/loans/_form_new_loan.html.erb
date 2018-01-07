@@ -11,7 +11,7 @@
     <%= f.input :borrower,  input_html: { id: 'borrower2'}, label: 'Autre emprunteur', error: 'Borrower is mandatory, please specify one'%>
   </div>
   <%= f.input :principal, label: 'Montant (€)', placeholder: '100 000.50' ,error: 'principal is mandatory, please specify one'%>
-  <%= f.input :term_length , label: 'Durée (années)', placeholder: '10' %>
+  <%= f.input :term_length , label: 'Durée (mois)', placeholder: '120' %>
   <%= f.input :annual_rate, label: 'Taux annuel (%)', placeholder: '1.254'%>
   <%= f.input :type_loan, label: 'Type d emprunt', collection: ["K+I constant"], include_blank: false%>
   <%= f.input :frequency_payment, label: 'Echéances', collection: ["mensuelles", "trimestrielles", "semestrielles", "annuelles"], include_blank: false %>

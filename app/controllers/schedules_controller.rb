@@ -15,7 +15,7 @@ class SchedulesController < ApplicationController
     periode = get_periode(loan.frequency_payment)
     capital = loan[:principal]  # en cents
     tx_periode = get_rate(loan[:annual_rate]) / periode
-    nb_echeance = loan[:term_length] * periode
+    nb_echeance = loan[:term_length] / 12 * periode
     mensualite = (capital * tx_periode / (1-(1 + tx_periode)**(-nb_echeance))).round # en cents
     dueDate = loan[:first_payment_date]
 
@@ -54,7 +54,6 @@ class SchedulesController < ApplicationController
         principal_due: principalDue, payment_due: mensualite, principal_balance: principalBalance)
   end
 
-
   def get_periode(frequency)
     case frequency
     when "mensuelles"
@@ -62,7 +61,7 @@ class SchedulesController < ApplicationController
     when "trimestrielles"
       return 4
     when "semestrielles"
-      return 3
+      return 2
     when "annuelles"
       return 1
     end
