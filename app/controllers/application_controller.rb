@@ -30,7 +30,7 @@ helper_method :get_amout, :get_rate, :display_amount, :display_rate, :display_da
 # get data
 
   def get_loans_id
-   return Loan.where(user_id: current_user).map { |x| x.id }
+   return Loan.where(user_id: current_user).where(tokeep: true).map { |x| x.id }
   end
 
 helper_method :get_loans_id

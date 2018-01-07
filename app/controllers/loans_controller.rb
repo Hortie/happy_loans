@@ -9,6 +9,7 @@ class LoansController < ApplicationController
 
   def new
     @loan = Loan.new
+    lenders_borrowers
   end
 
   def create
@@ -20,6 +21,9 @@ class LoansController < ApplicationController
     if @loan.save
       redirect_to new_loan_schedule_path(@loan.id)
     else
+        # @loan.update(lender: "")
+        # @loan.update(borrower: "")
+      lenders_borrowers
       render :new
     end
   end
@@ -49,5 +53,11 @@ class LoansController < ApplicationController
     redirect_to loans_path
   end
 
+  def lenders_borrowers
+    @lenders = Loan.where(user_id: current_user.id).where(tokeep: true).map {|l| l.lender}.uniq
+    @lenders << "Autre"
+    @borrowers = Loan.where(user_id: current_user.id).where(tokeep: true).map {|l| l.borrower}.uniq
+    @borrowers << "Autre"
+  end
 
 end

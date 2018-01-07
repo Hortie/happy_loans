@@ -1,7 +1,15 @@
 <h1>Saisissez les informations suivantes : </h1>
 <%= simple_form_for @loan, wrapper: :horizontal_form, html: { class: 'form-horizontal form-new-loan'} do |f| %>
-  <%= f.input :lender, label: 'Prêteur',  placeholder: 'Votre Banque', error: 'Lender is mandatory, please specify one'%>
-  <%= f.input :borrower, label: 'Emprunteur', placeholder: 'SAS ET', error: 'Borrower is mandatory, please specify one'%>
+  <!-- lender -->
+  <%= f.input :lender,  input_html: { id: 'lender1'}, collection: @lenders , label: 'Prêteur',  error: 'Lender is mandatory, please specify one'%>
+  <div id ="divlender2" class = "hidden">
+    <%= f.input :lender,  input_html: { id: 'lender2'}, label: 'Autre prêteur', error: 'Lender is mandatory, please specify one'%>
+  </div>
+  <!-- borrower  -->
+  <%= f.input :borrower, input_html: { id: 'borrower1'},collection: @borrowers ,label: 'Emprunteur', error: 'Borrower is mandatory, please specify one'%>
+  <div id ="divborrower2" class = "hidden">
+    <%= f.input :borrower,  input_html: { id: 'borrower2'}, label: 'Autre emprunteur', error: 'Borrower is mandatory, please specify one'%>
+  </div>
   <%= f.input :principal, label: 'Montant (€)', placeholder: '100 000.50' ,error: 'principal is mandatory, please specify one'%>
   <%= f.input :term_length , label: 'Durée (années)', placeholder: '10' %>
   <%= f.input :annual_rate, label: 'Taux annuel (%)', placeholder: '1.254'%>
