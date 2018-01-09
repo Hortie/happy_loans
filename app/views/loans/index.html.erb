@@ -7,9 +7,106 @@
       <% end %>
       <!-- index all loans  -->
       <%= render 'recap_tab' %>
+
+
+<h1>NEw test highcharts </h1>
+
+<h1>Click tracking</h1>
+
+<div id="event_period" class="row">
+  <%= form_tag api_loans_path, remote: true do %>
+    <div class="col-sm-1">
+      <label for="start_date">Start date</label>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="input-group">
+        <input type="text" class="actual_range form-control datepicker" id="start_date" name="start_date">
+        <div class="input-group-addon">
+          <span class="glyphicon glyphicon-th"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-1 col-sm-offset-1">
+      <label for="end_date">End date</label>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="input-group">
+        <input type="text" class="actual_range form-control datepicker" id="end_date" name="end_date">
+        <div class="input-group-addon">
+          <span class="glyphicon glyphicon-th"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <%= submit_tag 'Show!', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
+
+<%= render 'graph' %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- get start date  -->
+      <form action="" method="get">
+        <!-- <div class="col-sm-3"> -->
+          <h1><%= @sdate %></h1>
+          <label for="sdate">Choisir la date de référence : </label>
+        </div>
+        <div class="col-sm-3">
+          <div class="input-group">
+            <input type="text" class="form-control datepicker" id="sdate" name="sdate" placeholder= <%= @sdate %>>
+            <div class="input-group-addon">
+              <span class="glyphicon glyphicon-th"></span>
+            </div>
+          </div>
+        </div>
+<!--         <input type="submit">
+      </form>
+      Drop down list to know if it is K / I / K+I
+      <form action="" method="get"> -->
+        <!-- <div class="col-sm-3"> -->
+          <label for="ki">Afficher les graphiques pour K, I, ou K+I </label>
+        </div>
+        <div class="col-sm-3">
+          <select id="ki-choice">
+            <option value="cap">capital</option>
+            <option value="int">interêt</option>
+            <option value="capint">capital + interêt</option>
+          </select>
+        </div>
+        <input type="submit">
+      </form>
+
+
+
+
+
     </div>
   </div>
 </div>
+
+
+
 
 
 <div class="container">
