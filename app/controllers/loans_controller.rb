@@ -2,6 +2,11 @@ class LoansController < ApplicationController
   before_action :set_user
 
   def index
+    if params["sdate"] != nil
+      @sdate = params["sdate"]
+    else
+      @sdate = Time.now
+    end
     @loans = Loan.where(user_id: current_user.id)
     ids = @loans.map { |ll| ll.id }
     @schedules = Schedule.where(loan_id: ids)

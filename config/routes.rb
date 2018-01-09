@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -18,4 +18,23 @@ Rails.application.routes.draw do
         get 'due_per_period'
       end
     end
+
+
+namespace :api do
+    resources :loans, only: [:create, :index] do
+      collection do
+        get 'by_day'
+      end
+    end
+end
+
+
+
+
+
+
+
+
+
+
 end
